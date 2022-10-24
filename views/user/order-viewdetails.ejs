@@ -1,0 +1,78 @@
+<%- include('../layouts/header.ejs')  %> 
+<%-include('../layouts/partials/user-header.ejs') %> 
+
+
+    <section class="vh-100 gradient-custom-2">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-md-10 col-lg-8 col-xl-6">
+            <div class="card card-stepper" style="border-radius: 16px;">
+              <div class="card-header p-4">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <p class="text-muted mb-2"> <span class="fw-bold text-body"> </span></p>
+                    <p class="text-muted mb-0"> Placed On <span class="fw-bold text-body">
+                        <%= docs.orderDate %>
+                      </span> </p>
+                  </div>
+                  <div>
+
+                  </div>
+                </div>
+              </div>
+              <% for(i=0;i<docs.items.length;i++){ %>
+                <div class="card-body p-4">
+                  <div class="d-flex flex-row mb-4 pb-2">
+                    <div class="flex-fill">
+                      <h5 class="bold">
+                        <%= docs.items[i].productName %>
+                      </h5>
+                      <p class="text-muted">
+                        <%= docs.items[i].quantity %> item
+                      </p>
+                      <h4 class="mb-3">
+                        <%= docs.items[i].price %> <span class="small text-muted"> <%= docs.items[i].payment %> </span>
+                      </h4>
+                      <p class="text-muted">Tracking Status on: <span class="text-body"><%= docs.orderStatus  %> </span></p>
+                    </div>
+                    <div>
+                      <img class="align-self-center img-fluid" src="/multimages/<%= docs.items[i].image1 %> "
+                        width="250">
+                    </div>
+                  </div>
+                  <% } %>
+  
+                </div>
+                <div class="card-footer p-4" >
+                  <div class="d-flex justify-content-between" style="margin-left: 5rem;">
+                
+                    <div class="border-start h-100 "></div>
+                    <% if(docs.orderStatus=="delivered"){  %> 
+                        Delivered
+                      <% }else{ %> 
+                    <button class="btn btn-danger "><a href="/profile/cancelorder?id=<%= docs._id  %> " style="text-decoration: none;">Cancel</a></button>
+                    <% } %> 
+                    <div class="border-start h-100"></div>
+  
+                    <div class="border-start h-100"></div>
+                    <!-- <h5 class="fw-normal mb-0"><a href="#!" class="text-muted"><i class="fas fa-ellipsis-v"></i></a> -->
+                    </h5>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  
+    <script src="/public/javascripts/jquery-1.11.0.min.js"></script>
+    <script src="/public/javascripts/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/public/javascripts/bootstrap.bundle.min.js"></script>
+    <script src="/public/javascripts/templatemo.js"></script>
+    <script src="/public/javascripts/custom.js"></script>
+                  
+
+
+
+</body>

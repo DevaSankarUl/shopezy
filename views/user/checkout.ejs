@@ -1,0 +1,306 @@
+<%- include('../layouts/header.ejs')  %> 
+<%-include('../layouts/partials/user-header.ejs') %> 
+
+
+
+<div class=" container-fluid my-5 ">
+    <div class="row justify-content-center ">
+        <div class="col-xl-10">
+            <div class="card shadow-lg ">
+                <div class="row p-2 mt-3 justify-content-between mx-sm-2">
+                </div>
+                
+                
+            
+                <div class="row justify-content-around">
+                    <div class="col-md-5">
+                        <div class="card border-0">
+                            <div class="card-header pb-0">
+                                <h2 class="card-title space ">Checkout</h2>
+                                <p class="card-text text-muted mt-4  space">SHIPPING DETAILS</p>
+                                <hr class="my-0">
+
+                            <div class="">
+                                <p class="card-text text-muted mt-4 mb-2  space">SELECT DELIVERY ADDRESS</p>
+                            </div>
+
+                    <form id="checkout-form">
+
+                            <% for(let i=0; i<value.address.length; i++) { %>
+
+                                <div class="form-check mt-3">
+                                    <input type="radio" class="form-check-input" id="radio1" name="selectedAddress" value="<%= i %> " required >
+                                    <p class="display-address"><%= value.address[i].name %>,</p>
+                                    <p class="display-address"><%= value.address[i].mobile %>,</p>
+                                    <p class="display-address"><%= value.address[i].address1 %>,</p> 
+                                    <p class="display-address"><%= value.address[i].address2 %>,</p>
+                                    <p class="display-address"><%= value.address[i].city %>,</p>
+                                    <p class="display-address"><%= value.address[i].state %>,</p>
+                                    <p class="display-address"><%= value.address[i].zip %></p>
+                                    <label class="form-check-label" for="radio1"></label>
+                                </div>
+                            <% } %>
+
+                            <a href="/add-address" style="text-decoration: none; color: blue;"><p>Add a new address</p></a>
+                            </div> 
+                            
+
+                          
+
+                            
+                           
+
+
+                           
+                        </div>
+                        </div>
+                     <div class="col-md-5">
+                        <div class="card border-0 ">
+                            <div class="card-header card-2">
+                                <p class="card-text text-muted mt-md-4 space">ORDER SUMMARY </p>
+                                <hr class="my-2">
+                            </div>
+
+                            <% if(cartItems.items.length === 0) { %>
+                                <hr class="my-4">
+                                <p>No items found</p>
+                                <hr class="my-4">
+                              <% } %>
+
+
+                            <div class="card-body pt-0">
+                              <% for(let i=0; i<cartItems.items.length; i++) { %> 
+                                <div class="row  justify-content-between">
+                                    <div class="col-auto col-md-7">
+                                        <div class="media flex-column flex-sm-row">
+                                            <img class=" img-fluid mb-2 mt-2" src="/multimages/<%= cartItems.items[i].image1%> " width="62" height="62">
+                                            <div class="media-body  my-auto">
+                                                <div class="row ">
+                                                    <div class="col-auto"><small class="text-muted"><%= cartItems.items[i].productName%></small></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" pl-0 flex-sm-col col-auto  my-auto"> <h6 class=""><%= cartItems.items[i].quantity%></h6></div>
+                                    <div class=" pl-0 flex-sm-col col-auto  my-auto "><h6><b>₹ <%= cartItems.items[i].price%></b></h6></div>
+                                </div>
+                                <hr class="my-2">
+                                <% } %> 
+
+                                
+                                
+
+
+                                <div class="row mt-5">
+                                    <div class="col">
+                                        <div class="row justify-content-between">
+                                            <div class="col-4"><h6 class="mb-3"><b>Sub Total</b></h6></div>
+                                            <div class="flex-sm-col col-auto"><h6 class="mb-3" ><b>₹ <%= cartItems.bill %> </b></h6></div>
+                                        </div>
+                                        
+                                        <input value="<%= cartItems.bill %>" type="text" name="" id="cartValue" hidden>
+                        
+                            <!-- <div> -->
+                                <h5 class="text-uppercase mb-3">Give code</h5>
+                                   <div class="mb-5">
+                                      <div class="form-outline">
+                                         <div style="display: flex; gap: 10px;">
+                                            <!-- <form id="applyCoupon"> -->
+                                              <input id="checkoutCoupon" type="text" class="form-control form-control-lg" name="couponcode" />
+                                              <button type="button" onclick="applyCoupon()" class="btn btn-dark btn-block"
+                                              data-mdb-ripple-color="dark">Apply</button>
+                                            <!-- </form> -->
+
+                                         </div>
+                                              <label class="form-label" for="form3Examplea2">Enter your code</label>&nbsp;&nbsp;&nbsp;
+                                                <% if(validation.validCoupon){ %> 
+                                                <label style="color: red;" class="form-label" for="form3Examplea2">Coupen Not Valid</label>
+                                                <% }else if(validation.usedCoupon) {%> 
+                                                    <label style="color: red;" class="form-label" for="form3Examplea2">Used Coupon</label>
+                                                    <% }else if(validation.dateExpiry) {%> 
+                                                    <label style="color: red;" class="form-label" for="form3Examplea2">Date Expired</label>
+                                                    <% }else if(validation.amountMin) {%> 
+                                                        <label style="color: red;" class="form-label" for="form3Examplea2">Minimum Bill Required</label>
+                                                        <% } %>  
+                                        </div>
+                                    </div>
+                            <!-- </div> -->
+                                        <!-- <div class="row justify-content-between">
+                                            <div class="col"><h6 class="mb-3"><b>Shipping</b></h6></div>
+                                            <div class="flex-sm-col col-auto"><h6 class="mb-3" style="color: blue"><b>Free</b></h6></div>
+                                        </div> -->
+                                        <!-- <div class="row justify-content-between">
+                                            <div class="col-4"><h6 ><b>Total</b></h6></div>
+                                            <div class="flex-sm-col col-auto"><h6  class="mb-3"><b>₹ <//%= .bill %> </b></h6> </div>
+                                        </div><hr class="my-0">
+                                    </div> -->
+                                    <div class="row justify-content-between">
+                                        <div class="col-4"><h6 class="mb-3"><b>Coupon Value</b></h6></div>
+                                        <div class="flex-sm-col col-auto"><h6 class="mb-3" id="sample"><b></b></h6></div>
+                                    </div>
+                                    <div class="row justify-content-between">
+                                        <div class="col-4"><h6 class="mb-3"><b>Total</b></h6></div>
+                                        <div class="flex-sm-col col-auto">
+                                    <h6 class="mb-3" id="sample1"><b></b></h6></div>
+                                    </div>
+                                    <input type="hidden" id="discountedBill" name="Bill" value="" >
+                                    
+                                    
+                                </div>
+                                </div>
+
+                                <div class="">
+                                    <p class="card-text text-muted mt-1 mb-2  space">SELECT PAYMENT OPTION</p>
+                                </div>
+                                
+
+                                <!-- <form action="/test" method="post"> -->
+                                    <!-- <button id="rzp-button1">Pay</button> -->
+                                <!-- </form> -->
+
+
+                                <div class="form-check"> 
+                                    <input class="form-check-input mt-5 mx-3" type="radio" value="razorpay" name="paymentType" id="flexRadioDefault1" required> 
+                                    <label class="form-check-label" for="flexRadioDefault1"> 
+                                        <img class="" src="https://upload.wikimedia.org/wikipedia/en/8/89/Razorpay_logo.svg" alt="" height="100" width="100"> 
+                                    </label> 
+                                  </div> 
+                                  <div class="form-check"> 
+                                    <input class="form-check-input  mx-3" type="radio" value="paypal" name="paymentType" id="flexRadioDefault2" required> 
+                                    <label class="form-check-label" for="flexRadioDefault2"> 
+                                      <img src="https://pngimg.com/uploads/paypal/paypal_PNG15.png" alt="" height="30" width="100"> 
+                                    </label> 
+                                  </div> 
+                                  <div class="form-check"> 
+                                    <input class="form-check-input mt-4 mx-3" type="radio" value="cod" name="paymentType" id="flexRadioDefault3" required> 
+                                    <label class="form-check-label" for="flexRadioDefault3">
+                                        <img class="mt-3" src="https://www.pngitem.com/pimgs/m/193-1939153_cod-cash-on-delivery-stamp-hd-png-download.png" alt="" height="40" width="80"> 
+                                    </label> 
+                                  </div> 
+                                <div class="row mb-5 mt-4 "> 
+                                    <div class="col-md-7 col-lg-6 mx-auto"><button type="submit" class="btn btn-block btn-outline-dark">Proceed to Payment</button></div> 
+                                </div> 
+            </form>  
+                        </div>
+                             
+                            </div> 
+                        </div> 
+                    </div>  
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+</div> 
+
+ 
+    <script>
+function applyCoupon(){
+ let  checkoutCoupon = document.getElementById('checkoutCoupon').value
+ let  cartValue = document.getElementById('cartValue').value
+//    console.log(cartValue)
+  $.ajax({
+  url:'/cart/apply-coupon',
+  method:'post',
+  data:$('#checkoutCoupon').serialize(),
+  success:(response)=>{  
+    console.log("The response")
+
+    if(response.couponValue){
+        
+        discountedBill = cartValue-response.couponValue
+        console.log(discountedBill)
+        document.getElementById('sample').innerHTML = response.couponValue
+        document.getElementById('sample1').innerHTML = discountedBill
+        document.getElementById('discountedBill').value = discountedBill
+
+    }else{
+        location.replace('/checkoutPage')
+    }
+    
+     
+  }
+})
+
+}
+
+    </script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script>
+        $("#checkout-form").submit((e) => {
+            console.log("ajax working")
+            e.preventDefault()
+            $.ajax({
+                url: '/checkout',
+                method: 'post',
+                data: $('#checkout-form').serialize(),
+                success: (response) => {
+                    console.log("The response")
+
+                    if (response.codSuccess) {
+                        console.log("COD working")
+                        location.replace('/payment/purchase')
+                        // window.open('/userhome/success')
+                    } else if (response.razorpay) {
+                        console.log("razorpay working")
+                        razorpayPayment(response.order)
+                    } else if (response.paypal) {
+                        console.log("calling the paypal")
+                        location.replace('/paypal')
+                    }
+                }
+            })
+        })
+
+
+        function razorpayPayment(order) {
+            console.log(order)
+            var options = {
+                "key":"rzp_test_Xe2nuMPXgXola0", // Enter the Key ID generated from the Dashboard
+                "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                "currency": "INR",
+                "name": "Camper Trek",
+                "description": "Test Transaction",
+                "image": "/images/logo.png",
+                "order_id": order.id, // This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                "handler": function (response) {
+                    RazoverifyPayment(response, order)
+                },
+                "prefill": {
+                    "name": "SHOPEE",
+                    "email": "camper@gmail.com",
+                    "contact": "+91 7356344191"
+                },
+                "notes": {
+                    "address": "SHOPEE, Kazhakkoottam, Trivandrum"
+                },
+                "theme": {
+                    "color": "#3399cc"
+                }
+            }
+
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        }
+        function RazoverifyPayment(payment, order) {
+            location.replace('/payment/purchase')
+
+            $.ajax({
+                url: '/userhome/razo-verify-payment',
+                data: {
+                    payment,
+                    order
+                },
+                method: 'post',
+                success: (response) => {
+                    if (response.status) {
+                        console.log("succes")
+                        location.href ='/payment/purchase'
+                    } else { // need to render payment faild page
+                        location.reload()
+                        alert("payment failed")
+                    }
+                }
+            })
+        }
+    </script>

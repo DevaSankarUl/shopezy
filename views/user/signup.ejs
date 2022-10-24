@@ -1,0 +1,72 @@
+<%- include('../layouts/header')  %> 
+<section class="vh-100">
+    <div class="container py-5 h-100">
+      <div class="row d-flex align-items-center justify-content-center h-100">
+        <div class="col-md-8 col-lg-7 col-xl-6">
+          <img src="https://images.pexels.com/photos/904350/pexels-photo-904350.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            class="img-fluid" alt="Phone image">
+        </div>
+        <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+          <form method="post" action="user_registration">
+            <div class="d-flex align-items-center mb-3 pb-1">
+                <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                <span class="h1 fw-bold mb-0">Sign-up</span>
+              </div>
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form2Example17"><b>Username</b></label>
+                <input type="text" id="form2Example17" class="form-control form-control-lg" name="name" placeholder="Enter Username" />
+                
+              </div>
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form2Example27"><b>Email Address</b></label>
+              <input type="email" id="form1Example13" class="form-control form-control-lg" name="email" placeholder="Enter Email" />
+      
+            </div>
+           <% if(response.accountErr){%>
+          <p style="color: red;"><%=response.accountErrMsg%></p>
+            <%  }%> 
+  
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form2Example27"><b>Phone number</b></label>
+                <input type="tel" id="form2Example27" class="form-control form-control-lg" name="mobile" placeholder="Enter the phone number" />
+                
+              </div>
+
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form2Example27"><b>Password</b></label>
+                <input type="password" id="form2Example27" class="form-control form-control-lg" name="password" placeholder="Enter the password" />
+                
+              </div>
+                 <% if(response.passErr){%>
+                 <p style="color:red;" ><%=response.passErrMsg %></p>
+                <% } %> 
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form2Example27"><b>Re-enter Password</b></label>
+                <input type="password" id="form2Example27" class="form-control form-control-lg" name="confirmPassword" placeholder="Enter the password" />
+                
+              </div>
+
+              <div class="pt-1 mb-4">
+                <button class="btn btn-dark btn-lg btn-block" type="submit">Sign Up </button>
+              </div>
+
+              
+              <p class="mb-5 pb-lg-2" style="color: #393f81;">Already have account <a href="/user_login"
+                  style="color: #393f81;">Login</a></p>
+  
+            <a class="btn btn-primary btn-lg btn-block" style="background-color:#000" href="#!"
+              role="button">
+              <i class="fab fa-facebook-f me-2"></i>Continue with Facebook
+            </a>
+            <a class="btn btn-primary btn-lg btn-block" style="background-color: #000" href="#!"
+              role="button">
+              <i class="fab fa-twitter me-2"></i>Continue with Twitter</a>
+  
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  

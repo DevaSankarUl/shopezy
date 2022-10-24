@@ -1,0 +1,95 @@
+<%- include('../layouts/header')  %> 
+<%-include('../layouts/partials/admin-header') %>
+
+
+
+
+<section>
+    <div class="table-responsive container-fluid">
+        <div class="container">
+          <div class="input-group mt-5">
+            <a href="/product_table">
+            <button class="btn btn-primary">Add Product</button>
+            </a>
+            <div style="position: absolute; right: 0px; width: 300px;">
+              <input style="align-items: flex-end" type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Search..."/>
+            </div>
+          </div>
+            
+          <div class="table-responsive">
+            <table id="myTable" class="table table-hover mt-5">
+                <thead>
+                  <tr>
+                    <th scope="col">No:</th>
+                    <th scope="col">ProductName</th>
+                    <th scope="col">Actual Price</th>
+                    <th scope="col">discounted Price</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">image-1</th>
+                    <th scope="col">image-2</th>
+                    <th scope="col">Action</th>
+                  </tr>
+            
+                </thead>
+          
+                
+                <% for(let i =0; i< result.length; i++) {%> 
+                    <tbody>
+                    <tr>
+                          <th scope="row"> <%=i+1  %> </th>
+                          <td><%= result[i].productName%> </td>
+                          <td><%= result[i].actualPrice%> </td>
+                          <td><%= result[i].discountPrice%> </td>
+                          <td><%= result[i].description%> </td>
+                          <td><%= result[i].stock%> </td>
+                          <td><%= result[i].category%> </td>
+                          <td><img class="card-img-top" style="width:150px; height:150px;" src="/multimages/<%= result[i].image1 %> " alt="..." /></td>
+                          <td><img class="card-img-top" style="width:150px; height:150px;" src="/multimages/<%= result[i].image2 %> " alt="..." /> </td>
+                          <td>
+                            <a href="/add_product/edit_product?id=<%= result[i]._id  %>"onclick="return confirm('Are you sure want to edit this<%= result[i].productName %> ')">
+                              <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+                              <span class="material-symbols-outlined">
+                                edit_square
+                                </span>
+                            </a>
+                            <a href="/add_product/delete_product?id=<%= result[i]._id  %>"onclick="return confirm('Are you sure want to delete this<%= result[i].productName %> ')">
+                              <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+                              <span class="material-symbols-outlined">
+                                delete
+                                </span>
+                            </a>
+                          </td>
+                        </tr>
+                    </tbody>
+                    <% } %> 
+            </table>
+          </table>
+        </div>
+    
+      </div>
+    </table>
+  </div>
+  </section>
+  
+  
+  <script>
+    function myFunction() {
+      let input = document.getElementById("myInput");
+      let filter = input.value.toUpperCase();
+      let table = document.getElementById("myTable");
+      let tr = table.getElementsByTagName("tr");
+      for (let i = 0; i < tr.length; i++) {
+          let td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          let txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }       
+      }
+    }
+  </script>

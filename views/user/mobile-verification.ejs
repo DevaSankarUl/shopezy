@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css">
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<div class="h-screen bg-blue-500 py-20 px-3">
+    <div class="container mx-auto">
+        <div class="max-w-sm mx-auto md:max-w-lg mt-5">
+            <div class="w-full">
+                <div class="bg-white h-85 py-3 rounded text-center rounded-tl-2xl rounded-b-3xl">
+                      <h1 class="text-2xl font-bold">OTP Verification</h1>
+                      
+                     
+                      <form action="/user/send-otp" method="post">
+                      
+                        <label class="form-label" for="form1Example13"><b>phone Number</b></label><br>
+                        <div class="form-outlinemb-4 mt-2  align-middle">
+                          <input type="text" id="PhoneInput" class="form-control form-control-lg btn-outline-success mt-3 border-5"name="mobile" placeholder="Mobile No" />
+                        </div>
+                        <button type="submit" class="btn btn-outline-success mt-4">Send OTP</button>
+                   
+                 
+                        </form>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                          
+                                            <script>document.addEventListener("DOMContentLoaded", function(event) {
+
+                                              function OTPInput() {
+                                              const inputs = document.querySelectorAll('#otp > *[id]');
+                                              for (let i = 0; i < inputs.length; i++) { inputs[i].addEventListener('keydown', function(event) { if (event.key==="Backspace" ) { inputs[i].value='' ; if (i !==0) inputs[i - 1].focus(); } else { if (i===inputs.length - 1 && inputs[i].value !=='' ) { return true; } else if (event.keyCode> 47 && event.keyCode < 58) { inputs[i].value=event.key; if (i !==inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } else if (event.keyCode> 64 && event.keyCode < 91) { inputs[i].value=String.fromCharCode(event.keyCode); if (i !==inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } } }); } } OTPInput(); });</script>
+
+                          <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+                          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                          <script src="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"></script>
+                          <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>

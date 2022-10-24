@@ -1,0 +1,79 @@
+ <%- include('../layouts/header')  %> 
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+          <div class="row d-flex align-items-center justify-content-center h-100">
+            <div class="col-md-8 col-lg-7 col-xl-6">
+              <img src="https://images.pexels.com/photos/904350/pexels-photo-904350.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                class="img-fluid" alt="Phone image">
+            </div>
+            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+              <form action="/user_login" method="post">
+                <div class="d-flex align-items-center mb-3 pb-1">
+                              <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                              <span class="h1 fw-bold mb-0">LOGIN</span>
+                            </div>
+                            
+                           
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form1Example13"><b>Email address</b></label>
+                  <input type="email" id="form1Example13" class="form-control form-control-lg "name="email" placeholder="Enter email" />
+           
+                </div>
+                   <% if(response.registerErr) {%>
+                            <p style="color:red;"><%=response.registerErrMsg %></p>
+                         <% } %>
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form1Example23"><b>Password</b></label>
+                  <input type="password" id="form1Example23" class="form-control form-control-lg" name="password" placeholder="password" />
+             
+                </div>
+                <% if(response.passErr){%>
+                  <p style="color :red;"><%=response.passErrMsg %></p>
+         <% } %>
+
+         <% if(response.blockStatusErr){ %>
+          <p style="color: red;"><%= response.blockStatusErrMsg %>  </p>
+            <% } %>
+      
+                <div class="d-flex justify-content-around align-items-center mb-4">
+                  <!-- Checkbox -->
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+                    <label class="form-check-label" for="form1Example3"> Remember me </label>
+                  </div>
+                  <a href="#!">Forgot password?</a>
+                </div>
+      
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-secondary btn-lg btn-block">Login</button>
+      
+
+                    
+                <p class="mb-4  pb-lg-2" style="color: #393f81;"><b>  Login with Mobile </b> <a href="/mobile-verification "
+                    style="color: #393f81;">Click Here</a><br>
+
+                <div class="divider d-flex align-items-center my-4">
+                  <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+                </div>
+      
+                <a class="btn btn-primary btn-lg btn-block" style="background-color:#000" href="#!"
+                  role="button">
+                  <i class="fab fa-facebook-f me-2"></i>Continue with Facebook
+                </a>
+                <a class="btn btn-primary btn-lg btn-block" style="background-color: #000" href="#!"
+                  role="button">
+                  <i class="fab fa-twitter me-2"></i>Continue with Twitter</a>
+
+                  <p class="mb-5 pb-lg-2" style="color: #393f81;">
+                    <b>Don't have an account?</b>   <a href="/user_registration"
+                    style="color: #393f81;">Register here</a>
+                </p>
+                  
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <%- include('../layouts/footer')  %> 

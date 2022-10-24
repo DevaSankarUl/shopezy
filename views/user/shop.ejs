@@ -1,0 +1,78 @@
+<%- include('../layouts/header.ejs')  %> 
+<%-include('../layouts/partials/user-header.ejs') %> 
+
+
+
+
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5 "style="">
+        <div class="text-center text-white" >
+            <h1 class="display-4 fw-bolder">Shop in style</h1>
+            <p class="lead fw-normal text-white-50 mb-0 ">With SHOPEZy</p>
+        </div>
+    </div>
+</header>
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center ml-5">
+
+
+            <% for(let i=0; i<result.length; i++) { %>
+                <div class="col mb-5 shadow p-3 mb-5 bg-white rounded">
+                    <div class="card h-100 ">
+                        <!-- Sale badge-->
+                        <div class="badge bg-dark text-white position-absolute"
+                            style="top: 0.5rem; right: 0.5rem; cursor: pointer;">
+                            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+                            <a href="/wishlist?id=<%= result[i]._id %>"> <span class="material-symbols-outlined">
+                                favorite
+                                </span>
+                        </div>
+                        <!-- Product image-->
+                        <a href="/view_product?id=<%= result[i]._id %> "><img class="img-responsive" style="width:300px; height:250px;" src="/multimages/<%= result[i].image1 %> " alt="..." /></a>
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name--> 
+                                <a href="/view_product?id=<%= result[i]._id %> ">                                     
+                                <h5 class="fw-bolder" style="color:black ;">
+                                    <%= result[i].productName %>
+                                </h5></a> 
+                            
+                                <!-- Product reviews-->
+                                <div class="d-flex justify-content-center small text-warning mb-2">
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                </div>
+                                <!-- Product price-->
+                                <span style=" margin-right: 10px; font-size: 20px; font-weight: 600;">₹ <%=
+                                        result[i].discountPrice %></span>
+                                <span class="text-muted text-decoration-line-through" style="font-size: 16px">₹
+                                    <%= result[i].actualPrice %> </span>
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-3 border-top-0" style="background-color:#59ab6e;">
+
+                            <form action="/user_shop/addToCart?id=<%= result[i]._id %> " method="post">
+                                <div class="text-center"><button type="submit"
+                                        class="btn btn-outline-dark mt-auto mb-3" style="width: 100%;">Add to
+                                        cart</button></div>
+                            </form>
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto mb-3"
+                                    style="width: 100%;" href="/user_cart">Go to cart</a></div>
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                                    style="width: 100%;" href="#">Buy Now</a></div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+    </div>
+</section>
+
+<%- include('../layouts/footer') %>

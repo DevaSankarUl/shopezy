@@ -1,0 +1,103 @@
+ <%- include('../layouts/header')  %> 
+<%- include('../layouts/partials/admin-header') %>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order</title>
+  <link rel="stylesheet" href="/public/stylesheets/bootstrap.min.css">
+  <link rel="stylesheet" href="/public/stylesheets/templatemo.css">
+  <link rel="stylesheet" href="/public/stylesheets/custom.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/public/stylesheets/selection.css">
+</head>
+
+<body>
+
+  <!-- Close Top Nav -->
+
+
+  <!-- Header -->
+  
+
+
+  <div class="btn-group btn-group-toggle" id="selection" data-toggle="buttons" style="margin-left: 35rem;margin-top: 3rem;">
+      <label class="btn btn-secondary ">
+          <input type="radio" name="options" id="option1" autocomplete="off"><a href="/admin-order"><button
+                  class="button">New</button></a>
+      </label>
+      <label class="btn btn-secondary">
+          <input type="radio" name="options" id="option2" autocomplete="off"><a href="/admin-order/confirm"><button
+                  class="button">confirmed</button></a>
+      </label>
+      <label class="btn btn-secondary">
+          <input type="radio" name="options" id="option3" autocomplete="off"><a href="/admin-order/delivered"><button
+                  class="button">delivered</button></a>
+      </label>
+      <label class="btn btn-secondary">
+          <input type="radio" name="options" id="option3" autocomplete="off"><a href="/admin-order/cancel-order"><button
+                  class="button">Canceled</button></a>
+      </label>
+  </div>
+
+  <table class="table" id="myTable" style="width:80%;border: 2em,thin; margin-left: 100px;">
+      <thead>
+          <tr>
+              <th scope="col">id</th>
+              <th scope="col">amount</th>
+              <th scope="col">date</th>
+              <th scope="col">payment</th>
+              <!-- <th scope="col">Action</th>
+              <th scope="col">Cancel</th> -->
+              <th scope="col">Details</th>
+          </tr>
+      </thead>
+      <tbody>
+          <% for(let i=0;i<result.length;i++){ %>
+              <tr>
+                  <th scope="row">
+                      <%= result[i]._id %>
+                  </th>
+                  <td>₹ <%= result[i].orderBill %>
+                  </td>
+                  <td>
+                      <%= result[i].orderDate %>
+                  </td>
+                  <td>
+                      <%= result[i].paymentMethod %>
+                  </td>
+                  <% if(result[i].orderStatus=="New" ){ %>
+                      <td><a href="/admin-order/orderconfirmed?id=<%= result[i]._id  %> "><button type="button"
+                                  class="btn btn-outline-success">Confirm</button></a></td>
+                                  <td><a href="/admin-order/cancelOrder?id=<%= result[i]._id  %> "><button type="button"
+                                      class="btn btn-outline-success">Cancel</button></a></td>
+  
+
+                      <% } else if(result[i].orderStatus=="confirmed"  ) { %>
+
+                          <td><a href="/admin-order/delilvierdOrder?id=<%= result[i]._id  %> "><button type="button"
+                                      class="btn btn-outline-success">delivered</button></a></td>
+                          <% } %>
+                              <td><a href="/admin-order/view-products?id=<%= result[i]._id  %> "><button type="button"
+                                          class="btn btn-outline-success">View</button></a></td>
+
+              </tr>
+              <% } %>
+      </tbody>
+</body>
+
+</html>
+ 
+ 
+<script> 
+$(document).ready( function () { 
+  $('#myTable').DataTable(); 
+  });
+</script>
