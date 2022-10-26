@@ -35,7 +35,7 @@ const UserSchema = new Schema({
         }],
         profileImage:{
                 type:String,
-                default:'null'
+                default:"null"
         }
 },{timeStamps:true})
 const User=mongoose.model('User',UserSchema)
