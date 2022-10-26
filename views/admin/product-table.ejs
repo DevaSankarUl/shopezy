@@ -48,66 +48,20 @@
                           <td><img class="card-img-top" style="width:150px; height:150px;" src="/multimages/<%= result[i].image1 %> " alt="..." /></td>
                           <td><img class="card-img-top" style="width:150px; height:150px;" src="/multimages/<%= result[i].image2 %> " alt="..." /> </td>
                           <td>
-                            <!-- <a href="/add_product/edit_product?id=<%= result[i]._id  %>"onclick="return confirm('Are you sure want to edit this<%= result[i].productName %> ')">
+                            <a href="/add_product/edit_product?id=<%= result[i]._id  %>"onclick="return confirm('Are you sure want to edit this<%= result[i].productName %> ')">
                               <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
                               <span class="material-symbols-outlined">
                                 edit_square
                                 </span>
-                            </a> -->
-                            <form action="/add_product/edit_product?id=<%= result[i]._id  %>" method="post">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
-                             Edit
-                            </button>
-
-                              <!-- Modal -->
-                            <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                              <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Edit product</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    Are you sure about editing this product?
-                                  </div>
-                                  <!-- <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Edit</button>
-                                  </div> -->
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">NO</button>
-                                    <a button type="button" class="btn btn-success mr-7" href="/add_product/edit_product?id=<%= result[i]._id  %>" class="btn btn-danger" >YES</button></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          
-
+                            </a>
                             <a href="/add_product/delete_product?id=<%= result[i]._id  %>"onclick="return confirm('Are you sure want to delete this<%= result[i].productName %> ')">
                               <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-                              <span class="material-symbols-outlined id=exampleModal2">
+                              <span class="material-symbols-outlined">
                                 delete
                                 </span>
-                                  <!-- Modal -->
-                            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                              <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Edit product</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    Are you sure about editing this product?
-                                  </div>
                             </a>
-                            </form>
                           </td>
                         </tr>
-
                     </tbody>
                     <% } %> 
             </table>
