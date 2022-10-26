@@ -8,6 +8,7 @@ const router=express.Router()
 router.get('/user_login',services.isLoggedOut,services.loginRouter)
 router.post('/user_login',services.login)
 
+router.get('/', services.isLoggedIn,services.usrhomedefault)
 router.get('/user_home',services.isLoggedIn,services.userHome)
 router.get('/user_logout',services.logout)
 

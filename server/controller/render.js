@@ -95,6 +95,10 @@ exports.signUpRouter = (req,res)=>{
     res.render('user/signup',{response})
 }
 
+exports.usrhomedefault = (req,res) => {
+    res.redirect('/user_home')
+}
+
 exports.userHome=(req,res)=>{
     res.render('user/home')
 }
