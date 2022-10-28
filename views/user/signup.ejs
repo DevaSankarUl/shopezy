@@ -14,13 +14,13 @@
               </div>
             <div class="form-outline mb-4">
                 <label class="form-label" for="form2Example17"><b>Username</b></label>
-                <input type="text" id="form2Example17" class="form-control form-control-lg" name="name" placeholder="Enter Username" />
+                <input type="text" id="form2Example17" class="form-control form-control-lg" name="name" placeholder="Enter Username"  required/>
                 
               </div>
             <!-- Email input -->
             <div class="form-outline mb-4">
                 <label class="form-label" for="form2Example27"><b>Email Address</b></label>
-              <input type="email" id="form1Example13" class="form-control form-control-lg" name="email" placeholder="Enter Email" />
+              <input type="email" id="form1Example13" class="form-control form-control-lg" name="email" placeholder="Enter Email"  required/>
       
             </div>
            <% if(response.accountErr){%>
@@ -30,13 +30,13 @@
             <!-- Password input -->
             <div class="form-outline mb-4">
                 <label class="form-label" for="form2Example27"><b>Phone number</b></label>
-                <input type="tel" id="form2Example27" class="form-control form-control-lg" name="mobile" placeholder="Enter the phone number" />
+                <input type="tel" id="form2Example27" class="form-control form-control-lg" name="mobile" placeholder="Enter the phone number"  required/>
                 
               </div>
 
               <div class="form-outline mb-4">
                 <label class="form-label" for="form2Example27"><b>Password</b></label>
-                <input type="password" id="form2Example27" class="form-control form-control-lg" name="password" placeholder="Enter the password" />
+                <input type="password" id="form2Example27" class="form-control form-control-lg" name="password" placeholder="Enter the password"  required/>
                 
               </div>
                  <% if(response.passErr){%>
@@ -44,7 +44,7 @@
                 <% } %> 
               <div class="form-outline mb-4">
                 <label class="form-label" for="form2Example27"><b>Re-enter Password</b></label>
-                <input type="password" id="form2Example27" class="form-control form-control-lg" name="confirmPassword" placeholder="Enter the password" />
+                <input type="password" id="form2Example27" class="form-control form-control-lg" name="confirmPassword" placeholder="Enter the password"  required/>
                 
               </div>
 

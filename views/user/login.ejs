@@ -17,7 +17,7 @@
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form1Example13"><b>Email address</b></label>
-                  <input type="email" id="form1Example13" class="form-control form-control-lg "name="email" placeholder="Enter email" />
+                  <input type="email" id="form1Example13" class="form-control form-control-lg "name="email" placeholder="Enter email"  required/>
            
                 </div>
                    <% if(response.registerErr) {%>
@@ -26,7 +26,7 @@
                 <!-- Password input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form1Example23"><b>Password</b></label>
-                  <input type="password" id="form1Example23" class="form-control form-control-lg" name="password" placeholder="password" />
+                  <input type="password" id="form1Example23" class="form-control form-control-lg" name="password" placeholder="password"  required/>
              
                 </div>
                 <% if(response.passErr){%>
