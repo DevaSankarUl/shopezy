@@ -1,6 +1,4 @@
-# shopezy
-
-# Style 360 E commerce-Website
+# shopezy E-commerce project
 
 ## Table of contents
 
@@ -30,7 +28,7 @@ Please <u><b>DO NOT</b></u> provide real card number and data.
 
 In order to access the admin panel on "/admin" you need to provide the admin email and password.
 
-![This is an image](/MiniProjecthome.JPG)
+![This is an image](/shopezyHomePage.png)
 ## Run
 
 To run this application, you have to set your own environmental variables. For security reasons, some variables have been hidden from view and used as environmental variables with the help of dotenv package. Below are the variables that you need to set in order to run the application:
@@ -104,4 +102,4 @@ Admins can do the following:
 
 
 
- Copyright 2022 © [Devasankar U L](https://github.com/aswanthkris)
+ Copyright 2022 © [Devasankar U L]([(https://github.com/DevaSankarUl)])
